@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="{% url 'data' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="address" value="address">
+    <input type="submit" name="representatives" value="Find Your Local Representatives">
+    <input type="submit" name="elections" value="See Contested Elections">
+</form>
+<!-- {% for election in data.elections %}
+    <ul>
+        <li>
+            {{ election.id }}
+        </li>
+        <li>
+            {{ election.name }}
+        </li>
+    </ul>
+{% endfor %} -->
+
+{% endblock %}
