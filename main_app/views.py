@@ -10,6 +10,9 @@ def home(request):
     # print(data)
     return render(request, "home.html")
 
+def about(request):
+    return render(request, "about.html")
+
 def get_data(request):
     address = request.POST['address']
     print(request.POST)
