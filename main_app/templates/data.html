@@ -3,15 +3,27 @@
 {% block content %}
 
 {% if representatives %}
-    {% for representative in representatives.offices %}
+    {% for key, value in test_representatives.items %}
+    <div>
+        <h2>{{ value.name }}</h2>
+        <h3>{{ value.office.name }}</h3>
+        <h4>{{ value.party }}</h4>
+        <h5>{{ value.address.0.line1 }}, {{ value.address.0.city }}, {{ value.address.0.state }} {{ value.address.0.zip }}</h5>
+        <br>
+        <img src="{{ value.photoUrl }}" height="400px" width="400px">
+    </div>
+    {% endfor %}
+
+{% else %}
+
+    {% for contest in elections.contests %}
     <ul>
         <li>
-            {{ representative.name }}
+            {{ contest.office }}
         </li>
     </ul>
     {% endfor %}
-{% else %}
-    <h1>Election Test</h1>
+    
 {% endif %}
 
 
