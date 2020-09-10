@@ -17,11 +17,19 @@
 {% else %}
 
     {% for contest in elections.contests %}
-    <ul>
-        <li>
-            {{ contest.office }}
-        </li>
-    </ul>
+
+    <div>
+        <h2>{{ contest.office }}</h2>
+        {% for candidate in contest.candidates %}
+        <div>
+            <ul>
+                <li>{{ candidate.name }}</li>
+                <li>{{ candidate.party }}</li>
+                <li><a href="{{ candidate.candidateUrl }}">{{ candidate.candidateUrl }}</a></li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
     {% endfor %}
     
 {% endif %}
