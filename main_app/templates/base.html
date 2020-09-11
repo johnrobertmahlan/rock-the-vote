@@ -7,24 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>Know Your Vote</title>
 </head>
 <body>
-    <div class="navbar-fixed">
+    <!-- <div class="navbar-fixed">
         <nav>
-            <div class="nav-wrapper">
+            <div class="nav-wrapper z-depth 5">
                 <a href="/" class="brand-logo">Know Your Vote</a>
                 <ul class="right">
                     <li><a href="{% url 'about' %}">About</a></li>
                 </ul>
             </div>
         </nav>
-    </div>
+    </div> -->
     <main>
         {% block content %}
         {% endblock %}
     </main>
+    <!-- <footer class="page-footer">
+        <p>Copyright John Robert Mahlan</p>
+    </footer> -->
 </body>
 </html>

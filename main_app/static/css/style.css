@@ -2,12 +2,15 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-image: url("https://i.imgur.com/ulyU4J5.jpg");
+    background-size: cover;
+    font-family: 'Cormorant Garamond', serif;
 }
 
 main {
     flex: 1 0 auto;
     margin: auto;
-    margin-top: 150px;
+    margin-top: 200px;
 }
 
 footer {
@@ -16,5 +19,58 @@ footer {
 }
 
 .nav-wrapper {
-    background-color: blue !important
+    background-color: blue !important;
+    justify-content: space-around;
+}
+
+.page-footer {
+    background-color: red !important;
+}
+
+#site-title {
+    text-align: center;
+    color: blue;
+    font-size: 150px;
+    font-weight: 800;
+    border: 5px solid red;
+    background-color: white;
+}
+
+.input-field {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+input:focus {
+    border-bottom: 1px solid blue !important;
+    box-shadow: 0 1px 00 blue !important;
+}
+
+#address-input {
+    text-align: center;
+    font-size: 30px;
+    color: red;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.label.active {
+    color: blue !important;
+}
+
+.material-icons {
+    color: blue;
+}
+
+.btn-field {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#rep-btn {
+    background-color: red;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+#el-btn {
+    background-color: blue;
+    font-family: 'Cormorant Garamond', serif;
 }

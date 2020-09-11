@@ -15,7 +15,7 @@
     {% endfor %}
 
 {% else %}
-
+    {% if elections.contests %}
     {% for contest in elections.contests %}
 
     <div>
@@ -31,6 +31,9 @@
         {% endfor %}
     </div>
     {% endfor %}
+    {% else %}
+        <h5>Unfortunately, election data is not available for this address yet.</h5>
+    {% endif %}
     
 {% endif %}
 
