@@ -86,6 +86,12 @@ input:focus {
     font-family: 'Cormorant Garamond', serif;
 }
 
+#loc-btn {
+    background-color: white;
+    color: red;
+    font-family: 'Cormorant Garamond', serif;
+}
+
 .rep-display {
     display: flex;
     flex-wrap: wrap;

@@ -23,27 +23,30 @@
     {% endfor %}
 </div>
 
-{% else %}
+{% elif elections %}
     {% if elections.contests %}
+    <h2 class="data-title">Seats Up for Election at {{ address }}</h2>
+    <div class="rep-display"></div>
     {% for contest in elections.contests %}
-
-    <div>
-        <h2>{{ contest.office }}</h2>
-        {% for candidate in contest.candidates %}
-        <div>
-            <ul>
-                <li>{{ candidate.name }}</li>
-                <li>{{ candidate.party }}</li>
-                <li><a href="{{ candidate.candidateUrl }}">{{ candidate.candidateUrl }}</a></li>
-            </ul>
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ contest.office }}</span>
+            <h4>Candidates:</h4>
+            {% for candidate in contest.candidates %}
+                <h5>{{ candidate.name }}</h5>
+                <h6>{{ candidate.party }}</h6>
+                <a href="{{ candidate.candidateUrl }}">{{ candidate.candidateUrl}}</a>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
     {% endfor %}
+    <div>
     {% else %}
         <h5>Unfortunately, election data is not available for this address yet.</h5>
     {% endif %}
-    
+
+{% else %}
+        <h1>POLLING LOCATIONS!</h1>
 {% endif %}
 
 
