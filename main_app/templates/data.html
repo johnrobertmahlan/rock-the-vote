@@ -3,16 +3,25 @@
 {% block content %}
 
 {% if representatives %}
+<h2 class="data-title">Representing {{ address }}</h2>
+<div class="rep-display">
     {% for key, value in test_representatives.items %}
-    <div>
-        <h2>{{ value.name }}</h2>
-        <h3>{{ value.office.name }}</h3>
-        <h4>{{ value.party }}</h4>
-        <h5>{{ value.address.0.line1 }}, {{ value.address.0.city }}, {{ value.address.0.state }} {{ value.address.0.zip }}</h5>
-        <br>
-        <img src="{{ value.photoUrl }}" height="400px" width="400px">
-    </div>
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ value.name }}</span>
+                <h5>{{ value.office.name }}</h5>
+                <h5>{{ value.party }}</h5>
+                <h6>{{ value.address.0.line1 }}, {{ value.address.0.city }}, {{ value.address.0.state }} {{ value.address.0.zip }}</h6>
+                <br>
+                {% if value.photoUrl %}
+                    <img src="{{ value.photoUrl }}" height="400px" width="400px">
+                {% else %}
+                    <img src="https://i.imgur.com/wYs2wkU.jpg" height="400px" width="400px">
+                {% endif %}
+            </div>
+        </div>
     {% endfor %}
+</div>
 
 {% else %}
     {% if elections.contests %}

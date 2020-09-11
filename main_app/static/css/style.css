@@ -36,6 +36,17 @@ footer {
     background-color: white;
 }
 
+.data-title {
+    text-align: center;
+    color: blue;
+    /* font-size: 75px; */
+    font-weight: 600;
+    font-family: 'Cormorant Garamond', serif;
+    /* border: 5px solid red;
+    background-color: white;
+    width: 1500px; */
+}
+
 .input-field {
     font-family: 'Cormorant Garamond', serif;
 }
@@ -73,4 +84,19 @@ input:focus {
 #el-btn {
     background-color: blue;
     font-family: 'Cormorant Garamond', serif;
+}
+
+.rep-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.card {
+    padding: 15px;
+    margin: 15px !important;
+}
+
+.card-title {
+    font-size: 40px !important;
 }
