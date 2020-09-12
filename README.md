@@ -14,7 +14,7 @@ Know Your Vote was built with the following languages and technologies:
 
 * HTML, CSS, Python
 * Django
-* Django Requests [Library]9https://requests.readthedocs.io/en/master/
+* Django Requests [Library](https://requests.readthedocs.io/en/master/)
 * Google Civic Information [API](https://developers.google.com/civic-information)
 * [Materialize](https://materializecss.com/)
 * Google [Fonts](https://fonts.google.com/)
