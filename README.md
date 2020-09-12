@@ -2,7 +2,7 @@
 
 Voting is both a right and a privilege. So it is important to be well informed before casting your ballot. The goal of this app is to help you with that. Simply enter your address and:
 
-* Find out who your locatl representatives are
+* Find out who your local representatives are
 * See which elected seats are being contested in upcoming elections
 * Learn more about polling locations, early voting sites, and ballot dropoff locations
 
@@ -14,7 +14,7 @@ Know Your Vote was built with the following languages and technologies:
 
 * HTML, CSS, Python
 * Django
-* Django Requests [Library]9https://requests.readthedocs.io/en/master/
+* Django Requests [Library](https://requests.readthedocs.io/en/master/)
 * Google Civic Information [API](https://developers.google.com/civic-information)
 * [Materialize](https://materializecss.com/)
 * Google [Fonts](https://fonts.google.com/)
