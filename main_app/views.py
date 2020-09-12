@@ -168,13 +168,13 @@ def get_data(request):
         # print(officeIndices)
         return render(request, "data.html", {"address": address, "representatives": representatives, "names": names, "indices": indices, "heldOffice": heldOffice, 'officeIndices': officeIndices, 'realOffice': realOffice, 'test_representatives': test_representatives})
     elif request.method == 'POST' and 'elections' in request.POST:
-        url = f"https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address={address}&electionId=2000&key=AIzaSyD5XEFhbr4Shpzlq44v6gPSljNyauVnSvs"
+        url = f"https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address={address}&electionId=7000&key=AIzaSyD5XEFhbr4Shpzlq44v6gPSljNyauVnSvs"
         response = requests.get(url)
         elections = response.json()
         print(elections)
         return render(request, "data.html", {"elections": elections, "address": address})
     else:
-        url = f"https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address={address}&electionId=2000&key=AIzaSyD5XEFhbr4Shpzlq44v6gPSljNyauVnSvs"
+        url = f"https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address={address}&electionId=7000&key=AIzaSyD5XEFhbr4Shpzlq44v6gPSljNyauVnSvs"
         response = requests.get(url)
         # locations = response.json()
         return render(request, "data.html", {"locations": locations, "address": address})
