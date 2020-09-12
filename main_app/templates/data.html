@@ -28,8 +28,8 @@
     <h2 class="data-title">Seats Up for Election at {{ address }}</h2>
     <div class="rep-display"></div>
     {% for contest in elections.contests %}
-    <div class="card">
-        <div class="card-content">
+    <div id="rep-card" class="card">
+        <div id="rep-card-content" class="card-content">
             <span class="card-title">{{ contest.office }}</span>
             <h4>Candidates:</h4>
             {% for candidate in contest.candidates %}
@@ -46,8 +46,66 @@
     {% endif %}
 
 {% else %}
-        <h1>POLLING LOCATIONS!</h1>
+    <!-- <input id="pl-btn" class="btn" type="submit" name="pollingLocations" value="Find Polling Locations For Your Address">
+    <input id="evs-btn" class="btn" type="submit" name="earlyVoteSites" value="See Where You Can Vote Early">
+    <input id="dol-btn" class="btn" type="submit" name="dropOffLocations" value="Learn More About Where You Can Drop Off Your Ballot"> -->
+    
+    <div id="pollingLocations">
+        {% if locations %}
+        <h3 class="data-title-locations">Polling Locations for {{ address }}</h3>
+        <div class="rep-display"></div>
+        {% for pollingLocation in locations.pollingLocations %}
+        <div id="plCard" class="card">
+            <div id="plCardContent" class="card-content">
+                <span class="card-title">{{ pollingLocation.address.locationName}}</span>
+                <h3>{{ pollingLocation.address.line1 }} {{ pollingLocation.address.city }} {{ pollingLocation.address.state }} {{ pollingLocation.address.zip }}</h3>
+                <h4>Hours: {{ pollingLocation.pollingHours }}</h4>
+                <h4>Services: {{ pollingLocation.voterServices }}</h4>
+                <h4>Available from: {{ pollingLocation.startDate }} - {{ pollingLocation.endDate }}</h4>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h3>Sorry, there is no information on polling locations for your address at this time</h3>
+        {% endif %}  
+    </div>
+
+    <div id="earlyVotingSites">
+        {% if locations %}
+        {% for site in locations.earlyVoteSites %}
+        <div id="evsCard" class="card">
+            <div id="evsCardContent" class="card-content">
+                <span class="card-title">{{ site.address.locationName}}</span>
+                <h3>{{ site.address.line1 }} {{ site.address.city }} {{ site.address.state }} {{ site.address.zip }}</h3>
+                <h4>Hours: {{ site.pollingHours }}</h4>
+                <h4>Services: {{ site.voterServices }}</h4>
+                <h4>Available from: {{ site.startDate }} - {{ site.endDate }}</h4>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h3>Sorry, there is no information about early voting sites available for your address yet.</h3>
+        {% endif %}
+    </div>
+    
+    <div id="dropOffLocations">
+        {% if locations %}
+        {% for dropOff in locations.dropOffLocations %}
+        <div id="dolCard" class="card">
+            <div id="dolCardContent" class="card-content">
+                <span class="card-title">{{ dropOff.address.locationName}}</span>
+                <h3>{{ dropOff.address.line1 }} {{ dropOff.address.city }} {{ dropOff.address.state }} {{ dropOff.address.zip }}</h3>
+                <h4>Hours: {{ dropOff.polliingHours }}</h4>
+                <h4>Services: {{ dropOff.voterServices }}</h4>
+                <h4>Available from: {{ dropOff.startDate }} - {{ dropOff.endDate }}</h4>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h1>Unfortunately, there is no information about ballot dropoff locations for your address at this time.</h1>
+        {% endif %}
+    </div>
 {% endif %}
 
-
 {% endblock %}
+

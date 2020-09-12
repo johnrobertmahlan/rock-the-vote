@@ -10,7 +10,7 @@ body {
 main {
     flex: 1 0 auto;
     margin: auto;
-    margin-top: 200px;
+    margin-top: 150px;
 }
 
 footer {
@@ -39,13 +39,64 @@ footer {
 .data-title {
     text-align: center;
     color: blue;
-    /* font-size: 75px; */
-    font-weight: 600;
+    font-size: 75px;
+    font-weight: 800;
     font-family: 'Cormorant Garamond', serif;
-    /* border: 5px solid red;
-    background-color: white;
-    width: 1500px; */
+    border-bottom: 5px solid red;
+    /* background-color: white;  */
+    /* width: 1500px; */
 }
+
+.data-title-locations {
+    text-align: center;
+    color: blue;
+    font-size: 75px;
+    font-weight: 800;
+    font-family: 'Cormorant Garamond', serif;
+    border-bottom: 5px solid red;
+    background-color: white; 
+    width: 1500px;
+}
+
+#rep-card {
+    margin: 0 auto !important;
+    width: 50%
+}
+
+#rep-card-content {
+    text-align: center;
+    width: 100%
+} 
+
+#evsCard {
+    margin: 0 auto !important;
+    width: 50%
+}
+
+#evsCardContent {
+    text-align: center;
+    width: 100%
+} 
+
+#dolCard {
+    margin: 0 auto !important;
+    width: 50%
+}
+
+#dolCardContent {
+    text-align: center;
+    width: 100%
+} 
+
+#plCard {
+    margin: 0 auto !important;
+    width: 50%
+}
+
+#plCardContent {
+    text-align: center;
+    width: 100%
+} 
 
 .input-field {
     font-family: 'Cormorant Garamond', serif;
@@ -92,6 +143,22 @@ input:focus {
     font-family: 'Cormorant Garamond', serif;
 }
 
+#pl-btn {
+    background-color: red;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+#evs-btn {
+    background-color: blue;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+#dol-btn {
+    background-color: white;
+    color: red;
+    font-family: 'Cormorant Garamond', serif;
+}
+
 .rep-display {
     display: flex;
     flex-wrap: wrap;
@@ -105,4 +172,8 @@ input:focus {
 
 .card-title {
     font-size: 40px !important;
+}
+
+h3, h4, h5, h6, span {
+    color: blue;
 }
