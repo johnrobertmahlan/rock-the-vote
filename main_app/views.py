@@ -4,99 +4,96 @@ import json
 
 # Toy Data for Testing UI
 
-locations = {'pollingLocations': [
-    {
-      'id': 'string',
-      "address": {
-        "locationName": 'High School',
-        "line1": '123 Main St',
-        "line2": 'string',
-        "line3": 'string',
-        "city": 'Town',
-        "state": 'State',
-        "zip": '123456'
-      },
-      "notes": 'string',
-      "pollingHours": '3-4pm',
-      "name": 'string',
-      "voterServices": 'We help',
-      "startDate": 'Today',
-      "endDate": 'Tomorrow',
-      "latitude": 'double',
-      "longitude": 'double',
-      "sources": [
-        {
-          "name": 'string',
-          "official": 'boolean'
-        }
-      ]
-    }
-  ],
-  'earlyVoteSites': [
-    {
-      "id": 'string',
-      "address": {
-        "locationName": 'Someplace',
-        "line1": '456 Old Main St.',
-        "line2": 'string',
-        "line3": 'string',
-        "city": 'Another Town',
-        "state": 'Another State',
-        "zip": '654321'
-      },
-      "notes": 'string',
-      "pollingHours": '4-5pm',
-      "name": 'string',
-      "voterServices": 'I guess',
-      "startDate": 'Yesterday',
-      "endDate": 'Never',
-      "latitude": 'double',
-      "longitude": 'double',
-      "sources": [
-        {
-          "name": 'string',
-          "official": 'boolean'
-        }
-      ]
-    }
-  ],
-  "dropOffLocations": [
-    {
-      "id": 'string',
-      "address": {
-        "locationName": 'Home',
-        "line1": '789 Road',
-        "line2": 'string',
-        "line3": 'string',
-        "city": 'CityTown',
-        "state": 'StatePlace',
-        "zip": '13579'
-      },
-      "notes": 'string',
-      "pollingHours": '5-6pm',
-      "name": 'string',
-      "voterServices": 'Occasionally',
-      "startDate": '2312 A.D.',
-      "endDate": 'The Big Crunch',
-      "latitude": 'double',
-      "longitude": 'double',
-      "sources": [
-        {
-          "name": 'string',
-          "official": 'boolean'
-        }
-      ]
-    }
-  ]
-}
+# locations = {'pollingLocations': [
+#     {
+#       'id': 'string',
+#       "address": {
+#         "locationName": 'High School',
+#         "line1": '123 Main St',
+#         "line2": 'string',
+#         "line3": 'string',
+#         "city": 'Town',
+#         "state": 'State',
+#         "zip": '123456'
+#       },
+#       "notes": 'string',
+#       "pollingHours": '3-4pm',
+#       "name": 'string',
+#       "voterServices": 'We help',
+#       "startDate": 'Today',
+#       "endDate": 'Tomorrow',
+#       "latitude": 'double',
+#       "longitude": 'double',
+#       "sources": [
+#         {
+#           "name": 'string',
+#           "official": 'boolean'
+#         }
+#       ]
+#     }
+#   ],
+#   'earlyVoteSites': [
+#     {
+#       "id": 'string',
+#       "address": {
+#         "locationName": 'Someplace',
+#         "line1": '456 Old Main St.',
+#         "line2": 'string',
+#         "line3": 'string',
+#         "city": 'Another Town',
+#         "state": 'Another State',
+#         "zip": '654321'
+#       },
+#       "notes": 'string',
+#       "pollingHours": '4-5pm',
+#       "name": 'string',
+#       "voterServices": 'I guess',
+#       "startDate": 'Yesterday',
+#       "endDate": 'Never',
+#       "latitude": 'double',
+#       "longitude": 'double',
+#       "sources": [
+#         {
+#           "name": 'string',
+#           "official": 'boolean'
+#         }
+#       ]
+#     }
+#   ],
+#   "dropOffLocations": [
+#     {
+#       "id": 'string',
+#       "address": {
+#         "locationName": 'Home',
+#         "line1": '789 Road',
+#         "line2": 'string',
+#         "line3": 'string',
+#         "city": 'CityTown',
+#         "state": 'StatePlace',
+#         "zip": '13579'
+#       },
+#       "notes": 'string',
+#       "pollingHours": '5-6pm',
+#       "name": 'string',
+#       "voterServices": 'Occasionally',
+#       "startDate": '2312 A.D.',
+#       "endDate": 'The Big Crunch',
+#       "latitude": 'double',
+#       "longitude": 'double',
+#       "sources": [
+#         {
+#           "name": 'string',
+#           "official": 'boolean'
+#         }
+#       ]
+#     }
+#   ]
+# }
 
 
 # Create your views here.
 
 def home(request):
-    # response = requests.get('https://www.googleapis.com/civicinfo/v2/elections?key=AIzaSyD5XEFhbr4Shpzlq44v6gPSljNyauVnSvs')
-    # data = response.json()
-    # print(data)
     return render(request, "home.html")
 
 def about(request):
@@ -176,7 +173,7 @@ def get_data(request):
     else:
         url = f"https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address={address}&electionId=7000&key=AIzaSyD5XEFhbr4Shpzlq44v6gPSljNyauVnSvs"
         response = requests.get(url)
-        # locations = response.json()
+        locations = response.json()
         return render(request, "data.html", {"locations": locations, "address": address})
 
 # def representatives(request):

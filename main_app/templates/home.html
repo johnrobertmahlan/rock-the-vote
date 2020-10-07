@@ -1,18 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 id="site-title">KNOW YOUR VOTE</h1>
-<form action="{% url 'data' %}" method="POST" class="address-form">
-    {% csrf_token %}
-    <div class="input-field">
-        <input id="address-input" type="text" name="address" value="Enter Your Address">
-        <span class="helper-text red-text" data-error="Please enter a valid address" data-success="Great!"></span>
-    </div>
-    <div class="btn-field">
-        <input id="rep-btn" class="btn" type="submit" name="representatives" value="Find Your Local Representatives">
-        <input id="el-btn" class="btn" type="submit" name="elections" value="See Contested Elections">
-        <input id="loc-btn" class="btn" type="submit" name="locations" value="Learn More About Where to Vote">
-    </div>
-</form>
+<body id="homepage">
+    <main>
+        <h1 id="site-title">KNOW YOUR VOTE</h1>
+        <form action="{% url 'data' %}" method="POST" class="address-form">
+            {% csrf_token %}
+            <div class="input-field">
+                <input id="address-input" type="text" name="address" value="Enter Your Address">
+                <span class="helper-text red-text" data-error="Please enter a valid address" data-success="Great!"></span>
+            </div>
+            <div class="btn-field">
+                <input id="rep-btn" class="btn" type="submit" name="representatives" value="Find Your Local Representatives">
+                <input id="el-btn" class="btn" type="submit" name="elections" value="See Contested Elections">
+                <input id="loc-btn" class="btn" type="submit" name="locations" value="Learn More About Where to Vote">
+            </div>
+        </form>
+    </main>
+</body>
 
 {% endblock %}
