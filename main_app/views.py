@@ -1,4 +1,7 @@
 from django.shortcuts import render, redirect
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
+from .forms import ContactForm
 import requests
 import json
 
@@ -132,37 +135,7 @@ def get_data(request):
                     test_representatives[official_idx]['office'] = office
         
         print(test_representatives)
-        
-        # for official in officials:
-        #     idx = officials.index[official]
-        #     print(idx)
-        #     electedOffice[official['name']] = offices['officialIndices'[idx]]
-        
-
-        
-            # print(realOffice)
-        #     for idx in idxs:
-        #         realOffice[idx] = office['name']
-        #     return realOffice
-        # print(realOffice)
-        #     for index in indices:
-        #         if len(index) == 1:
-        #             index = index.join()
-        #             realOffice[index] = office['name']
-        #         else:
-        #             for idx in index:
-        #                 realOffice[idx] = office['name']
-        #         return realOffice
-        # print(realOffice)
         officeIndices = heldOffice.values()
-        # print(realOffice[(4,)])
-        # print(len(offices))
-        # print(len(officials))
-        # print(electedOffice)
-        # print(names)
-        # print(indices)
-        # print(heldOffice)
-        # print(officeIndices)
         return render(request, "data.html", {"address": address, "representatives": representatives, "names": names, "indices": indices, "heldOffice": heldOffice, 'officeIndices': officeIndices, 'realOffice': realOffice, 'test_representatives': test_representatives})
     elif request.method == 'POST' and 'elections' in request.POST:
         url = f"https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address={address}&electionId=7000&key=AIzaSyD5XEFhbr4Shpzlq44v6gPSljNyauVnSvs"
@@ -176,17 +149,21 @@ def get_data(request):
         locations = response.json()
         return render(request, "data.html", {"locations": locations, "address": address})
 
-# def representatives(request):
-#     address = request.POST['address']
-#     url = f"https://civicinfo.googleapis.com/civicinfo/v2/representatives?address={address}&includeOffices=true&key=AIzaSyD5XEFhbr4Shpzlq44v6gPSljNyauVnSvs"
-#     response = requests.get(url)
-#     representatives = response.json()
-#     print(representatives)
-#     return render(request, "data.html", {"representatives": representatives})
+def contactView(request):
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+            try:
+                send_mail(subject, message, from_email, ['johnrobertmahlan@gmail.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('success')
+    return render(request, 'email.html', {'form': form})
 
-# def elections(request):
-#     address = request.POST['address']
-#     response = requests.get(f"https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address={address}&electionId=2000&key=AIzaSyD5XEFhbr4Shpzlq44v6gPSljNyauVnSvs")
-#     elections = response.json()
-#     print(elections)
-#     return render(request, "data.html", {"elections": elections})
+def successView(request):
+    return HttpResponse('Success! Thanks for your message!')

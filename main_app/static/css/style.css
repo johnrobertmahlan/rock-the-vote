@@ -61,6 +61,10 @@ footer {
     font-weight: 800;
 }
 
+#about-title:hover {
+    color: red;
+}
+
 .quote {
     color: red;
     text-align: center;
