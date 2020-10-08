@@ -62,15 +62,28 @@
 <body id="data-locations">
     <main>
         <p class="data-title-locations">On this page, you can find more information about polling locations for {{ address }}.</p>
-        <input id="pl-btn" class="btn" type="submit" name="pollingLocations" value="Find Polling Locations For Your Address">
-        <input id="evs-btn" class="btn" type="submit" name="earlyVoteSites" value="See Where You Can Vote Early">
-        <input id="dol-btn" class="btn" type="submit" name="dropOffLocations" value="Learn More About Where You Can Drop Off Your Ballot">
-        <!-- <div id="pollingLocations">
-            {% if locations.pollingLocations %}
+        <div class="button-field">
+            <input id="pl-btn" class="btn" type="submit" name="pollingLocations" value="Find Polling Locations For Your Address">
+            <input id="evs-btn" class="btn" type="submit" name="earlyVoteSites" value="See Where You Can Vote Early">
+            <input id="dol-btn" class="btn" type="submit" name="dropOffLocations" value="Learn More About Where You Can Drop Off Your Ballot">
+        </div>
+    {% endif %}
+    </main>
+</body> -->
+
+
+
+<script>
+    const dataLocEl = document.getElementById('data-locations');
+    console.log(dataLocEl);
+
+    pollEl = ''
+    siteEl = ''
+    dropEl = ''
+
+    let pollingLocationHTML = `{% if locations.pollingLocations %}
+            <h5 class="polling-locations-title">Check out these polling locations below:</h5>
             <div class="rep-display">
-                <p>
-                    These are the available polling locations for {{ address }}.
-                </p>
                 {% for pollingLocation in locations.pollingLocations %}
                 <div id="plCard" class="card">
                     <div id="plCardContent" class="card-content">
@@ -82,17 +95,13 @@
                     </div>
                 </div>
                 {% endfor %}
-            </div> -->
-            <!-- {% else %}
+            </div>
+             {% else %} 
                 <h3>Sorry, there is no information on polling locations for your address at this time.</h3>
-            {% endif %}  
-        </div>
+            {% endif %}`
     
-        <div id="earlyVotingSites">
-            {% if locations.earlyVoteSites %}
-            <p>
-                Below are the early voting sites available at {{ address }}.
-            </p>
+    let earlyVotingSitesHTML = `{% if locations.earlyVoteSites %}
+            <h5 class="polling-locations-title">Here are the early voting sites at your address:</h5>
             {% for site in locations.earlyVoteSites %}
             <div id="evsCard" class="card">
                 <div id="evsCardContent" class="card-content">
@@ -106,20 +115,18 @@
             {% endfor %}
             {% else %}
                 <h3>Sorry, there is no information about early voting sites available for your address yet.</h3>
-            {% endif %}
-        </div>
-        
-        <div id="dropOffLocations">
+            {% endif %}`
+    
+
+    let dropOffLocationsHTML = `<div id="dropOffLocations">
             {% if locations.dropOffLocations %}
-            <p>
-                Below are the ballot dropoff locations for {{ address }}.
-            </p>
+            <h5 class="polling-locations-title">You can drop off your ballot at these locationns:</h5>
             {% for dropOff in locations.dropOffLocations %}
             <div id="dolCard" class="card">
                 <div id="dolCardContent" class="card-content">
                     <span class="card-title">{{ dropOff.address.locationName}}</span>
                     <h3>{{ dropOff.address.line1 }} {{ dropOff.address.city }} {{ dropOff.address.state }} {{ dropOff.address.zip }}</h3>
-                    <h4>Hours: {{ dropOff.polliingHours }}</h4>
+                    <h4>Hours: {{ dropOff.pollingHours }}</h4>
                     <h4>Services: {{ dropOff.voterServices }}</h4>
                     <h4>Available from: {{ dropOff.startDate }} - {{ dropOff.endDate }}</h4>
                 </div>
@@ -127,42 +134,6 @@
             {% endfor %}
             {% else %}
                 <h3>Unfortunately, there is no information about ballot dropoff locations for your address at this time.</h3>
-            {% endif %}
-        </div>
-    {% endif %}
-    </main>
-</body> -->
-
-
-
-<script>
-    alert("JS IS LOADED");
-    const dataLocEl = document.getElementById('data-locations');
-    console.log(dataLocEl);
-
-    pollEl = ''
-    siteEl = ''
-    dropEl = ''
-
-    let pollingLocationHTML = `{% if locations.pollingLocations %}
-            <div class="rep-display">
-                <p>
-                    These are the available polling locations for {{ address }}.
-                </p>
-                {% for pollingLocation in locations.pollingLocations %}
-                <div id="plCard" class="card">
-                    <div id="plCardContent" class="card-content">
-                        <span class="card-title">{{ pollingLocation.address.locationName}}</span>
-                        <h3>{{ pollingLocation.address.line1 }} {{ pollingLocation.address.city }} {{ pollingLocation.address.state }} {{ pollingLocation.address.zip }}</h3>
-                        <h4>Hours: {{ pollingLocation.pollingHours }}</h4>
-                        <h4>Services: {{ pollingLocation.voterServices }}</h4>
-                        <h4>Available from: {{ pollingLocation.startDate }} - {{ pollingLocation.endDate }}</h4>
-                    </div>
-                </div>
-                {% endfor %}
-            </div> -->
-            <!-- {% else %}
-                <h3>Sorry, there is no information on polling locations for your address at this time.</h3>
             {% endif %}`
 
     const plBtnEl = document.getElementById('pl-btn')
@@ -180,7 +151,7 @@
         pollEl.innerHTML = '';
         dropEl.innerHTML = '';
         siteEl = document.createElement('earlyVotingSites');
-        siteEl.innerHTML = "These are some early voting sites!";
+        siteEl.innerHTML = earlyVotingSitesHTML;
         dataLocEl.appendChild(siteEl);
     });
 
@@ -190,7 +161,7 @@
         pollEl.innerHTML = '';
         siteEl.innerHTML = '';
         dropEl = document.createElement('dropOffLocations');
-        dropEl.innerHTML = "You can drop off your ballots here!";
+        dropEl.innerHTML = dropOffLocationsHTML;
         dataLocEl.appendChild(dropEl);
     })
 

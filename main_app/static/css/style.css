@@ -68,13 +68,15 @@ footer {
 
 .data-title-locations {
     text-align: center;
-    color: blue;
-    font-size: 75px;
-    font-weight: 800;
+    color: red;
+    font-size: 30px;
     font-family: 'Cormorant Garamond', serif;
-    border-bottom: 5px solid red;
-    background-color: white; 
     width: 1500px;
+}
+
+.button-field {
+    display: flex;
+    justify-content: center;
 }
 
 #rep-card {
@@ -195,4 +197,9 @@ input:focus {
 
 h3, h4, h5, h6, span {
     color: blue;
+}
+
+.polling-locations-title {
+    text-align: center;
+    color: red;
 }
