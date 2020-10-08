@@ -49,6 +49,40 @@ footer {
     background-color: white;
 }
 
+#site-title:hover {
+    color: red;
+    border: 5px solid blue;
+}
+
+#about-title {
+    text-align: center;
+    color: blue;
+    font-size: 150px;
+    font-weight: 800;
+}
+
+.quote {
+    color: red;
+    text-align: center;
+}
+
+.ws {
+    font-style: italic;
+    font-weight: 600;
+    color: red;
+}
+
+.about-page {
+    display: flex;
+    justify-content: center;
+}
+
+.app-info {
+    width: 750px;
+    text-align: justify;
+    padding-bottom: 25px;
+}
+
 .data-title {
     text-align: center;
     color: blue;
@@ -151,6 +185,11 @@ input:focus {
 #rep-btn {
     background-color: red;
     font-family: 'Cormorant Garamond', serif;
+}
+
+#rep-btn:hover, #el-btn:hover, #loc-btn:hover {
+    box-shadow: 0px 12px 18px rgba(0, 0, 0, 0.4);
+    font-style: italic;
 }
 
 #el-btn {

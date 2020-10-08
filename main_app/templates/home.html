@@ -3,7 +3,7 @@
 {% block content %}
 <body id="homepage">
     <main>
-        <h1 id="site-title">KNOW YOUR VOTE</h1>
+        <a href="{% url 'about' %}"><h1 id="site-title">KNOW YOUR VOTE</h1></a>
         <form action="{% url 'data' %}" method="POST" class="address-form">
             {% csrf_token %}
             <div class="input-field">
