@@ -135,6 +135,8 @@ def get_data(request):
                     test_representatives[official_idx]['office'] = office
         
         print(test_representatives)
+        dict_items = test_representatives.items()
+        first_two = list(dict_items)[:2]
         officeIndices = heldOffice.values()
         return render(request, "data.html", {"address": address, "representatives": representatives, "names": names, "indices": indices, "heldOffice": heldOffice, 'officeIndices': officeIndices, 'realOffice': realOffice, 'test_representatives': test_representatives})
     elif request.method == 'POST' and 'elections' in request.POST:

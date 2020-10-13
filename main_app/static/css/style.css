@@ -189,6 +189,7 @@ input:focus {
 #rep-btn {
     background-color: red;
     font-family: 'Cormorant Garamond', serif;
+    transition: 150ms;
 }
 
 #rep-btn:hover, #el-btn:hover, #loc-btn:hover {
@@ -199,12 +200,14 @@ input:focus {
 #el-btn {
     background-color: blue;
     font-family: 'Cormorant Garamond', serif;
+    transition: 150ms;
 }
 
 #loc-btn {
     background-color: white;
     color: red;
     font-family: 'Cormorant Garamond', serif;
+    transition: 150ms;
 }
 
 #pl-btn {
@@ -245,4 +248,15 @@ h3, h4, h5, h6, span {
 .polling-locations-title {
     text-align: center;
     color: red;
+}
+
+.more_data {
+    width: 60%;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 0 10px black;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 9999;
+    display: none;
 }
