@@ -15,7 +15,7 @@
                         <span class="card-title">{{ value.name }}</span>
                         <h5>{{ value.office.name }}</h5>
                         <button class="modal-btn">Learn More</button>
-                        <div class="more_data">
+                        <div id="modal">
                             <h5>{{ value.party }}</h5>
                             <h6>{{ value.address.0.line1 }}, {{ value.address.0.city }}, {{ value.address.0.state }} {{ value.address.0.zip }}</h6>
                             <br>
@@ -78,40 +78,25 @@
 
 
 <script>
-    let modalBtns = document.getElementsByClassName('modal-btn');
-    let btnLength = modalBtns.length;
-    let moreData = document.getElementsByClassName('more_data');
-    let dataLength = moreData.length;
-    let cardContent = document.getElementsByClassName('card-content');
+    // let modalBtns = document.getElementsByClassName('modal-btn');
+    // let btnLength = modalBtns.length;
+    // let moreData = document.getElementsByClassName('more_data');
+    // let dataLength = moreData.length;
+    // let cardContent = document.getElementsByClassName('card-content');
     
-    // console.log(moreData);
-    // console.log(modalBtns);
-    // console.log(btnLength);
-    // console.log(dataLength);
-    // for (i=0; i<btnLength; i++) {
-    //     console.log(i);
-    //     console.log(modalBtns[i]);
-    //     console.log(moreData[i]);
-    //     modalBtns[i].addEventListener("click", function() {
-    //         console.log(i);
-    //         moreData[5].style.display = "block";
-    //         console.log(moreData[5]);
-    //     })
+    // for (let i=0; i<cardContent.length; i++) {
+    //     cardContent[i].addEventListener('click', handleClick);
     // }
 
-    for (let i=0; i<cardContent.length; i++) {
-        cardContent[i].addEventListener('click', handleClick);
-    }
-
-    function handleClick(evt) {
-        console.log("TEST");
-        console.log(evt);
-        console.log(evt.target.parentElement);
-        console.log(evt.target.parentElement.style);
-        console.log(evt.target.parentElement.style.display);
-        evt.target.nextElementSibling.style.display = "block";
-        // evt.target.parentElement.style.display = "block";
-    }
+    // function handleClick(evt) {
+    //     console.log("TEST");
+    //     console.log(evt);
+    //     console.log(evt.target.parentElement);
+    //     console.log(evt.target.parentElement.style);
+    //     console.log(evt.target.parentElement.style.display);
+    //     evt.target.nextElementSibling.style.display = "block";
+    //     // evt.target.parentElement.style.display = "block";
+    // }
 
     // const dataLocEl = document.getElementById('data-locations');
     // console.log(dataLocEl);

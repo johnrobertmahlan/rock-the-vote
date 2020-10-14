@@ -250,12 +250,21 @@ h3, h4, h5, h6, span {
     color: red;
 }
 
-.more_data {
-    width: 60%;
+/* .card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+#modal {
+    width: 500px;
     overflow: hidden;
     background: white;
     box-shadow: 0 0 10px black;
     border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     position: absolute;
     z-index: 9999;
     display: none;

@@ -1,3 +1,28 @@
+let cardContent = document.getElementsByClassName('card-content');
+ 
+for (let i=0; i<cardContent.length; i++) {
+    cardContent[i].addEventListener('click', handleClick);
+}
+
+let closeModalEls = document.getElementsByClassName('closeModal');
+
+function handleClick(evt) {
+    evt.target.nextElementSibling.style.display = "block";
+    for (let i=0; i<closeModalEls.length; i++) {
+        closeModalEls[i].innerHTML = `<button>Close</button>`
+    }
+}
+
+for (let i=0; i<closeModalEls.length; i++) {
+    closeModalEls[i].addEventListener('click', function(evt) {
+        evt.target.offsetParent.style.display = "none";
+    })
+}
+
+
+
+
+
 // const dataLocEl = document.getElementById('data-locations');
 // console.log(dataLocEl);
 
