@@ -226,11 +226,11 @@ input:focus {
     font-family: 'Cormorant Garamond', serif;
 }
 
-.rep-display {
+/* .rep-display {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
+    justify-content: center;
+    align-items: center;
+} */
 
 .card {
     padding: 15px;
@@ -256,16 +256,20 @@ h3, h4, h5, h6, span {
     align-items: center;
 } */
 
-#modal {
+.modal {
     width: 500px;
     overflow: hidden;
-    background: white;
+    background-color: blue;
     box-shadow: 0 0 10px black;
     border-radius: 10px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    position: absolute;
+    position: fixed;
     z-index: 9999;
     display: none;
+}
+
+#contact-link {
+    color: red;
 }

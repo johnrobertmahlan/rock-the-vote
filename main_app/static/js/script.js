@@ -1,23 +1,29 @@
-let cardContent = document.getElementsByClassName('card-content');
+// let cardContent = document.getElementsByClassName('card-content');
  
-for (let i=0; i<cardContent.length; i++) {
-    cardContent[i].addEventListener('click', handleClick);
-}
+// for (let i=0; i<cardContent.length; i++) {
+//     cardContent[i].addEventListener('click', handleClick);
+// }
 
-let closeModalEls = document.getElementsByClassName('closeModal');
+// let closeModalEls = document.getElementsByClassName('closeModal');
 
-function handleClick(evt) {
-    evt.target.nextElementSibling.style.display = "block";
-    for (let i=0; i<closeModalEls.length; i++) {
-        closeModalEls[i].innerHTML = `<button>Close</button>`
-    }
-}
+// function handleClick(evt) {
+//     // let key = JSON.stringify('key');
+//     // key = JSON.parse(key);
+//     // console.log(key);
+//     let modals = document.getElementsByClassName('modal');
+//     console.log(modals);
+//     console.log(evt);
+//     evt.target.firstElementChild.style.display = "block";
+//     for (let i=0; i<closeModalEls.length; i++) {
+//         closeModalEls[i].innerHTML = `<button>Close</button>`
+//     }
+// }
 
-for (let i=0; i<closeModalEls.length; i++) {
-    closeModalEls[i].addEventListener('click', function(evt) {
-        evt.target.offsetParent.style.display = "none";
-    })
-}
+// for (let i=0; i<closeModalEls.length; i++) {
+//     closeModalEls[i].addEventListener('click', function(evt) {
+//         evt.target.offsetParent.style.display = "none";
+//     })
+// }
 
 
 
