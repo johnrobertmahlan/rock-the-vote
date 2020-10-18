@@ -98,10 +98,26 @@ footer {
     /* width: 1500px; */
 }
 
-#data-reps, .data-elections {
+.data-elections {
     color: white;
     text-align: center;
     font-size: 50px;
+}
+
+#home-link {
+    color: white;
+    text-decoration: underline;
+}
+
+#home-link:hover {
+    font-style: italic;
+}
+
+#data-reps {
+    color: white;
+    text-align: justify;
+    font-size: 35px;
+    padding: 25px;
 }
 
 .data-title-locations {
@@ -281,14 +297,26 @@ h3, h4, h5, h6, span {
     transition: 150ms !important;
 }
 
-.table-headers {
+.table-headers-A {
     font-size: 55px;
     color: white;
-    text-align: center;
+    text-align: left;
 }
 
-.table-content {
+.table-headers-B {
+    font-size: 55px;
+    color: white;
+    text-align: right;
+}
+
+.table-content-A {
     font-size: 30px;
     color: white;
-    text-align: center;
+    text-align: left;
+}
+
+.table-content-B {
+    font-size: 30px;
+    color: white;
+    text-align: right;
 }

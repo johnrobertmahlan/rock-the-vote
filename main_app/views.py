@@ -104,7 +104,6 @@ def about(request):
 
 def get_data(request):
     address = request.POST['address']
-    print(request.POST)
     if request.method == 'POST' and 'representatives' in request.POST:
         url = f"https://civicinfo.googleapis.com/civicinfo/v2/representatives?address={address}&includeOffices=true&key=AIzaSyD5XEFhbr4Shpzlq44v6gPSljNyauVnSvs"
         response = requests.get(url)
@@ -114,9 +113,6 @@ def get_data(request):
         officials = json_reps['officials']
         names = []
         indices = []
-        heldOffice = {}
-        realOffice = {}
-        electedOffice = {}
         test_representatives = {}
         print(type(officials))
         for office in offices:
@@ -134,17 +130,16 @@ def get_data(request):
                 if official_idx in office['officialIndices']:
                     test_representatives[official_idx]['office'] = office
         
-        print(test_representatives)
         dict_items = test_representatives.items()
-        first_two = list(dict_items)[:2]
-        officeIndices = heldOffice.values()
-        return render(request, "data.html", {"address": address, "representatives": representatives, "names": names, "indices": indices, "heldOffice": heldOffice, 'officeIndices': officeIndices, 'realOffice': realOffice, 'test_representatives': test_representatives})
+        return render(request, "data.html", {"address": address, "representatives": representatives, 'test_representatives': test_representatives})
+
     elif request.method == 'POST' and 'elections' in request.POST:
         url = f"https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address={address}&electionId=7000&key=AIzaSyD5XEFhbr4Shpzlq44v6gPSljNyauVnSvs"
         response = requests.get(url)
         elections = response.json()
         print(elections)
         return render(request, "data.html", {"elections": elections, "address": address})
+
     else:
         url = f"https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address={address}&electionId=7000&key=AIzaSyD5XEFhbr4Shpzlq44v6gPSljNyauVnSvs"
         response = requests.get(url)

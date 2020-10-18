@@ -5,21 +5,20 @@
 {% if representatives %}
 <body id="reps">
     <main id="rep-main">  
-        <p id="data-reps">
-            Below you can find a list of representatives representing {{ address }}.
-        </p>
+        <p id="data-reps">The table below shows the representatives representing {{ address }}. You can learn more about each representative by clicking their name.
+        If you want to learn more about upcoming elections or where to vote, head back <a id="home-link" href="{% url 'home' %}">home</a> and search for your address again.</p>
         <div class="rep-display">
             <table class="highlight responsive-table card-content">
                 <thead>
-                    <th class="table-headers">Office</th>
-                    <th class="table-headers">Current Occupant</th>
+                    <th class="table-headers-A">Office</th>
+                    <th class="table-headers-B">Current Occupant</th>
                 </thead>
                 <tbody>
                     {% for key, value in test_representatives.items %}
                     {{ test_representatives | json_script:"test_representatives"}}
                     <tr>
-                        <td class="table-content">{{ value.office.name }}</td>
-                        <td class="table-content"><button class="modal-btn btn">{{ value.name }}</button></td> 
+                        <td class="table-content-A">{{ value.office.name }}</td>
+                        <td class="table-content-B"><button class="modal-btn btn">{{ value.name }}</button></td> 
                     </tr>
                     {% endfor %}
                     </div>
@@ -90,11 +89,72 @@
     let bodyEl = document.getElementById('reps');
     let closeModalEls = document.getElementsByClassName('closeModal');
     let modalBtns = document.getElementsByClassName('modal-btn');
+    const dataLocEl = document.getElementById('data-locations');
+    const plBtnEl = document.getElementById('pl-btn')
+    const evsBtnEl = document.getElementById('evs-btn')
+    const dolBtnEl = document.getElementById('dol-btn')
+    pollEl = ''
+    siteEl = ''
+    dropEl = ''
+
+    let pollingLocationHTML = `{% if locations.pollingLocations %}
+            <h5 class="polling-locations-title">Check out these polling locations below:</h5>
+            <div class="rep-display">
+                {% for pollingLocation in locations.pollingLocations %}
+                <div id="plCard" class="card">
+                    <div id="plCardContent" class="card-content">
+                        <span class="card-title">{{ pollingLocation.address.locationName}}</span>
+                        <h3>{{ pollingLocation.address.line1 }} {{ pollingLocation.address.city }} {{ pollingLocation.address.state }} {{ pollingLocation.address.zip }}</h3>
+                        <h4>Hours: {{ pollingLocation.pollingHours }}</h4>
+                        <h4>Services: {{ pollingLocation.voterServices }}</h4>
+                        <h4>Available from: {{ pollingLocation.startDate }} - {{ pollingLocation.endDate }}</h4>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+             {% else %} 
+                <h3>Sorry, there is no information on polling locations for your address at this time.</h3>
+            {% endif %}`
+
+    let earlyVotingSitesHTML = `{% if locations.earlyVoteSites %}
+            <h5 class="polling-locations-title">Here are the early voting sites at your address:</h5>
+            {% for site in locations.earlyVoteSites %}
+            <div id="evsCard" class="card">
+                <div id="evsCardContent" class="card-content">
+                    <span class="card-title">{{ site.address.locationName}}</span>
+                    <h3>{{ site.address.line1 }} {{ site.address.city }} {{ site.address.state }} {{ site.address.zip }}</h3>
+                    <h4>Hours: {{ site.pollingHours }}</h4>
+                    <h4>Services: {{ site.voterServices }}</h4>
+                    <h4>Available from: {{ site.startDate }} - {{ site.endDate }}</h4>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+                <h3>Sorry, there is no information about early voting sites available for your address yet.</h3>
+            {% endif %}`
+
+    let dropOffLocationsHTML = `<div id="dropOffLocations">
+            {% if locations.dropOffLocations %}
+            <h5 class="polling-locations-title">You can drop off your ballot at these locationns:</h5>
+            {% for dropOff in locations.dropOffLocations %}
+            <div id="dolCard" class="card">
+                <div id="dolCardContent" class="card-content">
+                    <span class="card-title">{{ dropOff.address.locationName}}</span>
+                    <h3>{{ dropOff.address.line1 }} {{ dropOff.address.city }} {{ dropOff.address.state }} {{ dropOff.address.zip }}</h3>
+                    <h4>Hours: {{ dropOff.pollingHours }}</h4>
+                    <h4>Services: {{ dropOff.voterServices }}</h4>
+                    <h4>Available from: {{ dropOff.startDate }} - {{ dropOff.endDate }}</h4>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+                <h3>Unfortunately, there is no information about ballot dropoff locations for your address at this time.</h3>
+            {% endif %}`
+    
 
     for (let i=0; i<cardContent.length; i++) {
         cardContent[i].addEventListener('click', handleClick);
     }
- 
  
     function handleClick(evt) {
         const test_representatives = JSON.parse(document.getElementById('test_representatives').textContent);
@@ -123,70 +183,6 @@
         })
     }
 
-
-    const dataLocEl = document.getElementById('data-locations');
-    console.log(dataLocEl);
-
-    pollEl = ''
-    siteEl = ''
-    dropEl = ''
-
-    let pollingLocationHTML = `{% if locations.pollingLocations %}
-            <h5 class="polling-locations-title">Check out these polling locations below:</h5>
-            <div class="rep-display">
-                {% for pollingLocation in locations.pollingLocations %}
-                <div id="plCard" class="card">
-                    <div id="plCardContent" class="card-content">
-                        <span class="card-title">{{ pollingLocation.address.locationName}}</span>
-                        <h3>{{ pollingLocation.address.line1 }} {{ pollingLocation.address.city }} {{ pollingLocation.address.state }} {{ pollingLocation.address.zip }}</h3>
-                        <h4>Hours: {{ pollingLocation.pollingHours }}</h4>
-                        <h4>Services: {{ pollingLocation.voterServices }}</h4>
-                        <h4>Available from: {{ pollingLocation.startDate }} - {{ pollingLocation.endDate }}</h4>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-             {% else %} 
-                <h3>Sorry, there is no information on polling locations for your address at this time.</h3>
-            {% endif %}`
-    
-    let earlyVotingSitesHTML = `{% if locations.earlyVoteSites %}
-            <h5 class="polling-locations-title">Here are the early voting sites at your address:</h5>
-            {% for site in locations.earlyVoteSites %}
-            <div id="evsCard" class="card">
-                <div id="evsCardContent" class="card-content">
-                    <span class="card-title">{{ site.address.locationName}}</span>
-                    <h3>{{ site.address.line1 }} {{ site.address.city }} {{ site.address.state }} {{ site.address.zip }}</h3>
-                    <h4>Hours: {{ site.pollingHours }}</h4>
-                    <h4>Services: {{ site.voterServices }}</h4>
-                    <h4>Available from: {{ site.startDate }} - {{ site.endDate }}</h4>
-                </div>
-            </div>
-            {% endfor %}
-            {% else %}
-                <h3>Sorry, there is no information about early voting sites available for your address yet.</h3>
-            {% endif %}`
-    
-
-    let dropOffLocationsHTML = `<div id="dropOffLocations">
-            {% if locations.dropOffLocations %}
-            <h5 class="polling-locations-title">You can drop off your ballot at these locationns:</h5>
-            {% for dropOff in locations.dropOffLocations %}
-            <div id="dolCard" class="card">
-                <div id="dolCardContent" class="card-content">
-                    <span class="card-title">{{ dropOff.address.locationName}}</span>
-                    <h3>{{ dropOff.address.line1 }} {{ dropOff.address.city }} {{ dropOff.address.state }} {{ dropOff.address.zip }}</h3>
-                    <h4>Hours: {{ dropOff.pollingHours }}</h4>
-                    <h4>Services: {{ dropOff.voterServices }}</h4>
-                    <h4>Available from: {{ dropOff.startDate }} - {{ dropOff.endDate }}</h4>
-                </div>
-            </div>
-            {% endfor %}
-            {% else %}
-                <h3>Unfortunately, there is no information about ballot dropoff locations for your address at this time.</h3>
-            {% endif %}`
-
-    const plBtnEl = document.getElementById('pl-btn')
     plBtnEl.addEventListener("click", function() {
         siteEl.innerHTML = '';
         dropEl.innerHTML = '';
@@ -195,8 +191,6 @@
         dataLocEl.appendChild(pollEl);
     });
 
-    const evsBtnEl = document.getElementById('evs-btn')
-    console.log(evsBtnEl);
     evsBtnEl.addEventListener("click", function() {
         pollEl.innerHTML = '';
         dropEl.innerHTML = '';
@@ -205,8 +199,6 @@
         dataLocEl.appendChild(siteEl);
     });
 
-    const dolBtnEl = document.getElementById('dol-btn')
-    console.log(dolBtnEl);
     dolBtnEl.addEventListener("click", function() {
         pollEl.innerHTML = '';
         siteEl.innerHTML = '';
@@ -218,5 +210,4 @@
 </script>
 
 {% endblock %}
-</body>
 </html>
