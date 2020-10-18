@@ -11,17 +11,15 @@
         <div class="rep-display">
             <table class="card-content">
                 <thead>
-                    <th>Name</th>
                     <th>Office</th>
-                    <th>Party</th>
+                    <th>Current Occupant</th>
                 </thead>
                 <tbody>
                     {% for key, value in test_representatives.items %}
                     {{ test_representatives | json_script:"test_representatives"}}
                     <tr>
-                        <td><button class="modal-btn">{{ value.name }}</button></td>
                         <td>{{ value.office.name }}</td>
-                        <td>{{ value.party }}</td> 
+                        <td><button class="modal-btn">{{ value.name }}</button></td> 
                     </tr>
                     {% endfor %}
                     </div>
@@ -105,47 +103,42 @@
         </div>
     {% endif %}
     </main>
-</body> -->
-
-
+</body>
 
 <script>
 alert('JS');
-let cardContent = document.getElementsByClassName('card-content');
+    let cardContent = document.getElementsByClassName('card-content');
 
-
+    for (let i=0; i<cardContent.length; i++) {
+        cardContent[i].addEventListener('click', handleClick);
+    }
  
- for (let i=0; i<cardContent.length; i++) {
-     cardContent[i].addEventListener('click', handleClick);
- }
+    let closeModalEls = document.getElementsByClassName('closeModal');
  
- let closeModalEls = document.getElementsByClassName('closeModal');
- 
- function handleClick(evt) {
-    const test_representatives = JSON.parse(document.getElementById('test_representatives').textContent);
-    console.log(test_representatives);
-    let modals = document.getElementsByClassName('modal');
-    console.log(modals);
-    // console.log(modals[3].target);
-    for (const key in test_representatives) {
-        for (let j=0; j<closeModalEls.length; j++) {
-            closeModalEls[j].innerHTML = `<button>Close</button>`
-        }
-        console.log(modals[key]);
+    function handleClick(evt) {
+        const test_representatives = JSON.parse(document.getElementById('test_representatives').textContent);
+        console.log(test_representatives);
+        let modals = document.getElementsByClassName('modal');
+        console.log(modals);
+        // console.log(modals[3].target);
+        for (const key in test_representatives) {
+            for (let j=0; j<closeModalEls.length; j++) {
+                closeModalEls[j].innerHTML = `<button>Close</button>`
+            }
+            console.log(modals[key]);
         // modals[key].style.display = "block";
-        if (evt.target.innerHTML == test_representatives[key].name) {
-            modals[key].style.display = "block";
+        console.log(evt);
+            if (evt.target.innerHTML == test_representatives[key].name) {
+                modals[key].style.display = "block";
+            }
         }
     }
-    
-    
- }
  
- for (let i=0; i<closeModalEls.length; i++) {
-     closeModalEls[i].addEventListener('click', function(evt) {
-         evt.target.offsetParent.style.display = "none";
-     })
- }
+    for (let i=0; i<closeModalEls.length; i++) {
+        closeModalEls[i].addEventListener('click', function(evt) {
+            evt.target.offsetParent.style.display = "none";
+        })
+    }
 
 
     const dataLocEl = document.getElementById('data-locations');
@@ -242,3 +235,5 @@ let cardContent = document.getElementsByClassName('card-content');
 </script>
 
 {% endblock %}
+</body>
+</html>
