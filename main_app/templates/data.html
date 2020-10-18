@@ -4,7 +4,7 @@
 
 {% if representatives %}
 <body id="reps">
-    <main>  
+    <main id="rep-main">  
         <p id="data-reps">
             Below you can find a list of representatives representing {{ address }}.
         </p>
@@ -87,12 +87,14 @@
 
 <script>
     let cardContent = document.getElementsByClassName('card-content');
+    let bodyEl = document.getElementById('reps');
+    let closeModalEls = document.getElementsByClassName('closeModal');
+    let modalBtns = document.getElementsByClassName('modal-btn');
 
     for (let i=0; i<cardContent.length; i++) {
         cardContent[i].addEventListener('click', handleClick);
     }
  
-    let closeModalEls = document.getElementsByClassName('closeModal');
  
     function handleClick(evt) {
         const test_representatives = JSON.parse(document.getElementById('test_representatives').textContent);
@@ -102,16 +104,22 @@
                 closeModalEls[j].innerHTML = `<button class="close-modal btn">Close</button>`
             }
             if (evt.target.innerHTML == test_representatives[key].name) {
+                bodyEl.style.backgroundColor = "maroon"
                 modals[key].style.display = "block";
+                for(let i=0; i<modalBtns.length; i++) {
+                    modalBtns[i].classList.add('disabled');
+                }
             }
         }
     }
-
-    console.log(closeModalEls);
  
     for (let i=0; i<closeModalEls.length; i++) {
         closeModalEls[i].addEventListener('click', function(evt) {
             evt.target.offsetParent.style.display = "none";
+            bodyEl.style.backgroundColor = "red";
+            for(let j=0; j<modalBtns.length; j++) {
+                modalBtns[j].classList.remove('disabled');
+            }
         })
     }
 
