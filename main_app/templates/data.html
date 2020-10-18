@@ -9,17 +9,17 @@
             Below you can find a list of representatives representing {{ address }}.
         </p>
         <div class="rep-display">
-            <table class="card-content">
+            <table class="highlight responsive-table card-content">
                 <thead>
-                    <th>Office</th>
-                    <th>Current Occupant</th>
+                    <th class="table-headers">Office</th>
+                    <th class="table-headers">Current Occupant</th>
                 </thead>
                 <tbody>
                     {% for key, value in test_representatives.items %}
                     {{ test_representatives | json_script:"test_representatives"}}
                     <tr>
-                        <td>{{ value.office.name }}</td>
-                        <td><button class="modal-btn">{{ value.name }}</button></td> 
+                        <td class="table-content">{{ value.office.name }}</td>
+                        <td class="table-content"><button class="modal-btn btn">{{ value.name }}</button></td> 
                     </tr>
                     {% endfor %}
                     </div>
@@ -39,26 +39,6 @@
                 <div class="closeModal"></div>
             </div>
             {% endfor %}
-            <!-- {% for key, value in test_representatives.items %}
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">{{ value.name }}</span>
-                        <h5>{{ value.office.name }}</h5>
-                        <button class="modal-btn">Learn More</button>
-                        <div id="modal">
-                            <h5>{{ value.party }}</h5>
-                            <h6>{{ value.address.0.line1 }}, {{ value.address.0.city }}, {{ value.address.0.state }} {{ value.address.0.zip }}</h6>
-                            <br>
-                            {% if value.photoUrl %}
-                                <img src="{{ value.photoUrl }}" height="400px" width="400px">
-                            {% else %}
-                                <img src="https:/s/i.imgur.com/wYs2wkU.jpg" height="400px" width="400px">
-                            {% endif %}
-                            <div class="closeModal"></div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %} -->
         </div>
     </main>
 </body>
@@ -106,7 +86,6 @@
 </body>
 
 <script>
-alert('JS');
     let cardContent = document.getElementsByClassName('card-content');
 
     for (let i=0; i<cardContent.length; i++) {
@@ -117,22 +96,18 @@ alert('JS');
  
     function handleClick(evt) {
         const test_representatives = JSON.parse(document.getElementById('test_representatives').textContent);
-        console.log(test_representatives);
         let modals = document.getElementsByClassName('modal');
-        console.log(modals);
-        // console.log(modals[3].target);
         for (const key in test_representatives) {
             for (let j=0; j<closeModalEls.length; j++) {
-                closeModalEls[j].innerHTML = `<button>Close</button>`
+                closeModalEls[j].innerHTML = `<button class="close-modal btn">Close</button>`
             }
-            console.log(modals[key]);
-        // modals[key].style.display = "block";
-        console.log(evt);
             if (evt.target.innerHTML == test_representatives[key].name) {
                 modals[key].style.display = "block";
             }
         }
     }
+
+    console.log(closeModalEls);
  
     for (let i=0; i<closeModalEls.length; i++) {
         closeModalEls[i].addEventListener('click', function(evt) {

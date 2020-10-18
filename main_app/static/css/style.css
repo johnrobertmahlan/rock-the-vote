@@ -226,11 +226,10 @@ input:focus {
     font-family: 'Cormorant Garamond', serif;
 }
 
-/* .rep-display {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
+.rep-display {
+    margin-left: 125px;
+    margin-right: 125px;
+}
 
 .card {
     padding: 15px;
@@ -257,8 +256,8 @@ h3, h4, h5, h6, span {
 } */
 
 .modal {
-    width: 500px !important;
-    overflow: hidden !important;
+    width: 650px !important;
+    height: 1500px !important;
     background-color: white !important;
     box-shadow: 0 0 10px black !important;
     border-radius: 10px !important;
@@ -268,8 +267,28 @@ h3, h4, h5, h6, span {
     position: fixed !important;
     z-index: 9999 !important;
     display: none;
+    padding: 50px !important;
 }
 
 #contact-link {
     color: red;
+}
+
+.modal-btn, .close-modal {
+    background-color: white !important;
+    color: red !important;
+    font-family: 'Cormorant Garamond', serif  !important;
+    transition: 150ms !important;
+}
+
+.table-headers {
+    font-size: 55px;
+    color: white;
+    text-align: center;
+}
+
+.table-content {
+    font-size: 30px;
+    color: white;
+    text-align: center;
 }
