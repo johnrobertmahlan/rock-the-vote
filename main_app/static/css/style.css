@@ -87,6 +87,10 @@ footer {
     padding-bottom: 25px;
 }
 
+.app-info>h5 {
+    margin: 20px;
+}
+
 .data-title {
     text-align: center;
     color: blue;
