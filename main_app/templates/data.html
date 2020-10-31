@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 {% if representatives %}
 <body id="reps">
     <main id="rep-main">  
@@ -29,6 +28,7 @@
                 <h3>{{ value.name }}</h3>
                 <h5>{{ value.party }}</h5>
                 <h6>{{ value.address.0.line1 }}, {{ value.address.0.city }}, {{ value.address.0.state }} {{ value.address.0.zip }}</h6>
+                <h6><a href="{{ value.urls }}" target="_blank">Website</a></h6>
                 <br>
                 {% if value.photoUrl %}
                     <img src="{{ value.photoUrl }}" height="400px" width="400px">
@@ -50,17 +50,24 @@
             Below is a list of all the elections being contested at {{ address }}.
         </p>
         <div class="rep-display"></div>
-        {% for contest in elections.contests %}
-        <div id="rep-card" class="card">
-            <div id="rep-card-content" class="card-content">
-                <span class="card-title">{{ contest.office }}</span>
-                <h4>Candidates:</h4>
+            {% for contest in elections.contests %}
+            <h2 id="contest-office">{{ contest.office }}</h2>
+            <table class="highlight responsive-table card-content">
+                <thead>
+                    <th class="table-headers-D">Candidate(s)</th>
+                    <th class="table-headers-E">Party Affiliation</th>
+                    <th class="table-headers-F">Website</th>
+                </thead>
                 {% for candidate in contest.candidates %}
-                    <h5>{{ candidate.name }}</h5>
-                    <h6>{{ candidate.party }}</h6>
-                    <a href="{{ candidate.candidateUrl }}">{{ candidate.candidateUrl}}</a>
+                <tbody>
+                    <tr>
+                        <td class="table-content-D">{{ candidate.name }}</td>
+                        <td class="table-content-E">{{ candidate.party }}</td>
+                        <td class="table-content-F"><a href="{{ candidate.candidateUrl }}" target="_blank">Website</a></td>
+                    </tr>
+                </tbody>
                 {% endfor %}
-            </div>
+            </table>
         </div>
         {% endfor %}
         <div>

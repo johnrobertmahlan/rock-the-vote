@@ -113,10 +113,6 @@ footer {
     text-decoration: underline;
 }
 
-#home-link:hover {
-    font-style: italic;
-}
-
 #data-reps {
     color: white;
     text-align: justify;
@@ -264,6 +260,12 @@ h3, h4, h5, h6, span {
     color: blue;
 }
 
+#contest-office {
+    color: white;
+    text-align: center;
+    margin-top: 150px;
+}
+
 .polling-locations-title {
     text-align: center;
     color: red;
@@ -288,6 +290,7 @@ h3, h4, h5, h6, span {
     z-index: 9999 !important;
     display: none;
     padding: 50px !important;
+    text-align: center !important;
 }
 
 #contact-link {
@@ -313,6 +316,11 @@ h3, h4, h5, h6, span {
     text-align: right;
 }
 
+.table-headers-D, .table-headers-E, .table-headers-F {
+    font-size: 40px;
+    color: white;
+}
+
 .table-content-A {
     font-size: 30px;
     color: white;
@@ -323,4 +331,9 @@ h3, h4, h5, h6, span {
     font-size: 30px;
     color: white;
     text-align: right;
+}
+
+.table-content-D, .table-content-E, .table-content-F {
+    font-size: 25px;
+    color: white;
 }

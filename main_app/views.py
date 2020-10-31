@@ -115,14 +115,14 @@ def get_data(request):
         indices = []
         test_representatives = {}
         print(type(officials))
-        for office in offices:
-            names.append(office['name'])
-            indices.append(office['officialIndices'])
-            idxs = tuple(office['officialIndices'])
-            heldOffice[office['name']] = office['officialIndices']
-            realOffice[idxs] = office['name']
-            for key, value in realOffice.items():
-                print(key, value)
+        # for office in offices:
+        #     names.append(office['name'])
+        #     indices.append(office['officialIndices'])
+        #     idxs = tuple(office['officialIndices'])
+        #     heldOffice[office['name']] = office['officialIndices']
+        #     realOffice[idxs] = office['name']
+        #     for key, value in realOffice.items():
+        #         print(key, value)
         
         for official_idx, official in enumerate(officials):
             test_representatives[official_idx] = official
