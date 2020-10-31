@@ -229,17 +229,20 @@ input:focus {
 #pl-btn {
     background-color: red;
     font-family: 'Cormorant Garamond', serif;
+    margin: 15px;
 }
 
 #evs-btn {
     background-color: blue;
     font-family: 'Cormorant Garamond', serif;
+    margin: 15px;
 }
 
 #dol-btn {
     background-color: white;
     color: red;
     font-family: 'Cormorant Garamond', serif;
+    margin: 15px;
 }
 
 .rep-display {
