@@ -28,7 +28,7 @@
                 <h3>{{ value.name }}</h3>
                 <h5>{{ value.party }}</h5>
                 <h6>{{ value.address.0.line1 }}, {{ value.address.0.city }}, {{ value.address.0.state }} {{ value.address.0.zip }}</h6>
-                <h6><a href="{{ value.urls }}" target="_blank">Website</a></h6>
+                <a href="{{ value.urls }}" target="_blank">Website</a>
                 <br>
                 {% if value.photoUrl %}
                     <img src="{{ value.photoUrl }}" height="400px" width="400px">
