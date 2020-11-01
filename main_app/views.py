@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
+from django.core.exceptions import ValidationError
 from .forms import ContactForm
 import requests
 import json
+import re
 
 # Toy Data for Testing UI
 
@@ -107,6 +109,10 @@ def addresserror(request):
 
 def get_data(request):
     address = request.POST['address']
+    ADDREGEX = r'(\d+)\s(\w+)\s(\w+)\.?\s(\w+\.?\d{1,})?(\w+),?\s\w{2}\s(\d{5})'
+    regex = re.compile(ADDREGEX, re.IGNORECASE)
+    # if not regex.match(address):
+    #     raise ValidationError(('That is an invalid address.'), params={'address': address})
     if request.method == 'POST' and 'representatives' in request.POST:
         try: 
             url = f"https://civicinfo.googleapis.com/civicinfo/v2/representatives?address={address}&includeOffices=true&key=AIzaSyD5XEFhbr4Shpzlq44v6gPSljNyauVnSvs"
@@ -141,16 +147,24 @@ def get_data(request):
             return render(request, "addresserror.html")
 
     elif request.method == 'POST' and 'elections' in request.POST:
+        if not regex.match(address):
+            return render(request, "addresserror.html")
+            # raise ValidationError(('That is an invalid address.'), params={'address': address})
         url = f"https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address={address}&electionId=7000&key=AIzaSyD5XEFhbr4Shpzlq44v6gPSljNyauVnSvs"
         response = requests.get(url)
         elections = response.json()
+        print(address)
         print(elections)
         return render(request, "data.html", {"elections": elections, "address": address})
 
     else:
+        if not regex.match(address):
+            return render(request, "addresserror.html")
+            # raise ValidationError(('That is an invalid address.'), params={'address': address})
         url = f"https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address={address}&electionId=7000&key=AIzaSyD5XEFhbr4Shpzlq44v6gPSljNyauVnSvs"
         response = requests.get(url)
         locations = response.json()
+        print(address)
         return render(request, "data.html", {"locations": locations, "address": address})
 
 def contactView(request):
