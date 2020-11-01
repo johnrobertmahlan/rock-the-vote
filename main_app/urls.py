@@ -7,5 +7,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('data/', views.get_data, name='data'),
     path('email/', contactView, name='email'),
-    path('success/', successView, name='success')
+    path('success/', successView, name='success'),
+    path('addresserror/', views.addresserror, name='addresserror'),
 ]
