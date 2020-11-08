@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<h1>Contact Us!</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <div class="form-actions">
-        <button type="submit">Send!</button>
-    </div>
-</form>
+<body id="email-page">
+    <main>
+        <form id="email-form" method="POST">
+            <h3 id="email-header">Fill out the form below and shoot us an email:</h3>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-actions">
+                <button id="email-btn" class="btn" type="submit">Send!</button>
+            </div>
+        </form>
+    </main>
+</body>
 
 {% endblock %}
