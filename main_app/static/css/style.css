@@ -40,7 +40,7 @@ footer {
     background-color: red !important;
 }
 
-#site-title {
+.site-title {
     text-align: center;
     color: blue;
     font-size: 150px;
@@ -49,19 +49,19 @@ footer {
     background-color: white;
 }
 
-#site-title:hover {
+.site-title:hover {
     color: red;
     border: 5px solid blue;
 }
 
-#about-title {
+.about-title {
     text-align: center;
     color: blue;
     font-size: 150px;
     font-weight: 800;
 }
 
-#about-title:hover {
+.about-title:hover {
     color: red;
 }
 
@@ -341,7 +341,7 @@ h3, h4, h5, h6, span {
     color: white;
 }
 
-#email-page {
+.email-page {
     background-image: url("https://i.imgur.com/ulyU4J5.jpg");
     background-size: cover;
 }
@@ -366,4 +366,15 @@ h3, h4, h5, h6, span {
 
 #email-btn {
     background-color: blue;
+}
+
+#email-success {
+    background-color: white;
+    color: blue;
+    font-size: 40px;
+    height: 50%;
+}
+
+#thanks {
+    text-align: center;
 }

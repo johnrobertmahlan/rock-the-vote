@@ -184,4 +184,4 @@ def contactView(request):
     return render(request, 'email.html', {'form': form})
 
 def successView(request):
-    return HttpResponse('Success! Thanks for your message!')
+    return render(request, 'success.html')
