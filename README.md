@@ -7,7 +7,11 @@ Voting is both a right and a privilege. So it is important to be well informed b
 * Learn more about polling locations, early voting sites, and ballot dropoff locations
 
 ## History of the App
-Know Your Vote was initially built as my Hack Week project when I was a student in General Assembly's Software Engineering Immersive Remote Flex Program. Since graduating, I have been tinkering with the app, focusing primarily on improving the front end design and implementing basic error handling and custom form validation.
+Know Your Vote was initially built as my Hack Week project when I was a student in General Assembly's Software Engineering Immersive Remote Flex Program. My pedagogical motivation for building this app was to learn how Django apps consumed RESTful APIs.
+
+Since graduating, I have been tinkering with the app, focusing primarily on improving the front end design and implementing basic error handling and custom form validation.
+
+As of November 8, 2020, I have decided to suspend development on this app.
 
 ## Get Started with the App
 Know Your Vote is deployed to Heroku [here](https://do-you-know-your-vote.herokuapp.com/).
