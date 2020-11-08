@@ -2,6 +2,13 @@
 
 {% block content %}
 
-<h1>You need to enter an address!</h1>
+<body id="addresserror">
+    <main id="error-message">
+        <h1 class="example">Please enter a valid address. For example:</h1>
+        <h1 class="example">123 Main St. City, State 98765</h1>
+        <a href="{% url 'home' %}"><h1 class="site-title">KNOW YOUR VOTE</h1></a>
+    </main>
+</body>
+
 
 {% endblock %}

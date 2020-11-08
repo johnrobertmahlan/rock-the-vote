@@ -378,3 +378,26 @@ h3, h4, h5, h6, span {
 #thanks {
     text-align: center;
 }
+
+#addresserror {
+    background-color: red;
+    color: white;
+}
+
+#error-message {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.example {
+    text-align: center;
+}
+
+#example-link {
+    color: white;
+}
+
+#example-link:hover {
+    color: blue;
+    text-decoration: underline;
+}
